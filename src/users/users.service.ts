@@ -14,7 +14,26 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAllUsers() {
-    return this.prisma.user.findMany();
+    try {
+      return await this.prisma.user.findMany();
+    } catch (err) {
+      return err.message;
+    }
+  }
+
+  async getUser(id: string) {
+    try {
+      const user = await this.prisma.user.findFirst({
+        where: { id: Number(id) },
+      });
+      if (!user) {
+        throw new HttpException('User doesnt exist', HttpStatus.BAD_REQUEST);
+      } else {
+        return user;
+      }
+    } catch (err) {
+      throw err;
+    }
   }
 
   async createUser(dto: CreateUserDto) {
