@@ -28,7 +28,7 @@ export class UsersController {
 
   @Get(':id')
   getUser(@Param('id') id: string) {
-    return this.usersService.getUser(id);
+    return this.usersService.getUserById(id);
   }
 
   @Post()
@@ -36,6 +36,7 @@ export class UsersController {
     return this.usersService.createUser(userDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put()
   updateUser(@Body() dto: UpdateUserDto) {
     return this.usersService.updateUser(dto);

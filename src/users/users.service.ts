@@ -22,7 +22,7 @@ export class UsersService {
     }
   }
 
-  async getUser(id: string) {
+  async getUserById(id: string) {
     try {
       const user = await this.prisma.user.findFirst({
         where: { id: Number(id) },
