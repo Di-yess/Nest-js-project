@@ -31,7 +31,7 @@ export class PostsService {
 
   async createPost(post: CreatePostDto) {
     try {
-      await this.prisma.post.create({ data: { ...post, userId: 7 } });
+      await this.prisma.post.create({ data: { ...post, userId: 5 } });
       return 'post created successfully';
     } catch (err) {
       throw err;

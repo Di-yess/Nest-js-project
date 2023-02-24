@@ -1,6 +1,5 @@
-// prisma/seed.ts
-
 import { PrismaClient } from '@prisma/client';
+// prisma/seed.ts
 
 // initialize Prisma Client
 const prisma = new PrismaClient();
@@ -9,8 +8,8 @@ async function main() {
   for (let i = 0; i < 5; i++) {
     await prisma.user.create({
       data: {
-        name: `ololo ${i * 10}`,
-        description: 'description',
+        login: `test ${i * 10}`,
+        password: '11',
       },
     });
   }

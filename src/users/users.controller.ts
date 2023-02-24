@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from './../auth/jwt-auth.guard';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { DeleteUserDto } from './dto/delete-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -10,6 +11,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 
 @Controller('users')
@@ -18,6 +20,7 @@ export class UsersController {
 
   //   @ApiOperation({summary:'Create a user'})
   //   @ApiResponse({status:200,type:User})
+  @UseGuards(JwtAuthGuard)
   @Get()
   getAllUsers() {
     return this.usersService.getAllUsers();

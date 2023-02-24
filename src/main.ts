@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
